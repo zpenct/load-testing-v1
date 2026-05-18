@@ -1,0 +1,5 @@
+reports
+summarizer
+mock/__pycache
+mock/.venv
+tmp
