@@ -13,7 +13,7 @@ const headers  = { 'Content-Type': 'application/json' };
 export const options = {
   stages: [
     { duration: '3m',  target: 10 },  // ramp up
-    // { duration: '40m', target: 10 },  // SOAK — amati tren latency dari menit ke menit
+    { duration: '40m', target: 10 },  // SOAK — amati tren latency dari menit ke menit
     { duration: '2m',  target: 0  },  // ramp down
   ],
   thresholds: {

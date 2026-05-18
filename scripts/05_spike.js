@@ -13,13 +13,13 @@ const headers  = { 'Content-Type': 'application/json' };
 export const options = {
   stages: [
     { duration: '2m',  target: 5  },   // traffic normal
-    // { duration: '30s', target: 50 },   // SPIKE! lonjakan tiba-tiba
-    // { duration: '2m',  target: 50 },   // tahan spike
-    // { duration: '1m',  target: 5  },   // balik ke normal
-    // { duration: '2m',  target: 5  },   // recovery observation
-    // { duration: '30s', target: 40 },   // spike kedua (lebih kecil)
-    // { duration: '1m',  target: 40 },   // tahan
-    // { duration: '2m',  target: 0  },   // ramp down final
+    { duration: '30s', target: 50 },   // SPIKE! lonjakan tiba-tiba
+    { duration: '2m',  target: 50 },   // tahan spike
+    { duration: '1m',  target: 5  },   // balik ke normal
+    { duration: '2m',  target: 5  },   // recovery observation
+    { duration: '30s', target: 40 },   // spike kedua (lebih kecil)
+    { duration: '1m',  target: 40 },   // tahan
+    { duration: '2m',  target: 0  },   // ramp down final
   ],
   thresholds: {
     http_req_failed:  ['rate<0.30'],   // toleransi lebih tinggi saat spike
