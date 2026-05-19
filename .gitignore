@@ -1,4 +1,6 @@
 reports
-mock/__pycache
-mock/.venv
-tmp
+mock/__pycache__/
+mock/.venv/
+tmp/
+__pycache__/
+*.pyc
