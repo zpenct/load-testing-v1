@@ -1,4 +1,4 @@
-reports/
+reports
 mock/__pycache__/
 mock/.venv/
 tmp/
