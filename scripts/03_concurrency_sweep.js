@@ -15,13 +15,13 @@ export const options = {
   stages: [
     { duration: '2m',  target: 1  },  // baseline warmup
     { duration: '3m',  target: 5  },  // normal low traffic
-    // { duration: '3m',  target: 10 },  // moderate
-    // { duration: '3m',  target: 15 },  // medium load
-    // { duration: '3m',  target: 20 },  // expected comfortable max
-    // { duration: '3m',  target: 25 },  // mulai masuk danger zone
-    // { duration: '3m',  target: 30 },  // stress
-    // { duration: '3m',  target: 35 },  // beyond expected capacity
-    // { duration: '3m',  target: 40 },  // extreme — amati apakah crash/OOM
+    { duration: '3m',  target: 10 },  // moderate
+    { duration: '3m',  target: 15 },  // medium load
+    { duration: '3m',  target: 20 },  // expected comfortable max
+    { duration: '3m',  target: 25 },  // mulai masuk danger zone
+    { duration: '3m',  target: 30 },  // stress
+    { duration: '3m',  target: 35 },  // beyond expected capacity
+    { duration: '3m',  target: 40 },  // extreme — amati apakah crash/OOM
     { duration: '3m',  target: 0  },  // ramp down, cek recovery
   ],
   thresholds: {
