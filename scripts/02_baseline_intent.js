@@ -11,38 +11,37 @@ import {
   PROMPTS_RAG_SHORT_BASE,
   PROMPTS_RAG_MEDIUM_BASE,
   PROMPTS_OUT_OF_SCOPE,
-} from "./utils/prompts.js";
+} from './utils/prompts.js';
 
 const BASE_URL = __ENV.RAG_URL || 'http://localhost:8000';
-const headers  = { 'Content-Type': 'application/json' };
+const headers = { 'Content-Type': 'application/json' };
 
-// Trend terpisah per intent
-const latencyRAGShort  = new Trend('baseline_latency_rag_short_ms', true);
+const latencyRAGShort = new Trend('baseline_latency_rag_short_ms', true);
 const latencyRAGMedium = new Trend('baseline_latency_rag_medium_ms', true);
-const latencyChitchat  = new Trend('baseline_latency_chitchat_ms', true);
-const latencyOOS       = new Trend('baseline_latency_oos_ms', true);
+const latencyChitchat = new Trend('baseline_latency_chitchat_ms', true);
+const latencyOOS = new Trend('baseline_latency_oos_ms', true);
 
 export const options = {
   vus: 1,
-  iterations: 20,  // 5 iterasi × 4 grup intent
+  iterations: 20,
   thresholds: {
     http_req_failed: ['rate<0.01'],
-    'baseline_latency_chitchat_ms': ['p(95)<3000'],
-    'baseline_latency_rag_short_ms': ['p(95)<15000'],
+    baseline_latency_chitchat_ms: ['p(95)<3000'],
+    baseline_latency_rag_short_ms: ['p(95)<15000'],
   },
 };
 
 function queryOnce(question) {
   return http.post(
     `${BASE_URL}/api/query`,
-    JSON.stringify({ question, history: [], role: "public" }),
+    JSON.stringify({ question, history: [], role: 'public' }),
     { headers, timeout: '120s' }
   );
 }
 
 export default function () {
   group('RAG Short', () => {
-    const q = PROMPTS_RAG_SHORT[Math.floor(Math.random() * PROMPTS_RAG_SHORT.length)];
+    const q = PROMPTS_RAG_SHORT_BASE[Math.floor(Math.random() * PROMPTS_RAG_SHORT_BASE.length)];
     const res = queryOnce(q);
     check(res, { 'status 200': (r) => r.status === 200 });
     latencyRAGShort.add(res.timings.duration);
@@ -51,7 +50,7 @@ export default function () {
   });
 
   group('RAG Medium', () => {
-    const q = PROMPTS_RAG_MEDIUM[Math.floor(Math.random() * PROMPTS_RAG_MEDIUM.length)];
+    const q = PROMPTS_RAG_MEDIUM_BASE[Math.floor(Math.random() * PROMPTS_RAG_MEDIUM_BASE.length)];
     const res = queryOnce(q);
     check(res, { 'status 200': (r) => r.status === 200 });
     latencyRAGMedium.add(res.timings.duration);
