@@ -36,7 +36,7 @@ function injectMedium(base) {
 }
 
 // ── Corpus ─────────────────────────────────────────────────────
-const PROMPTS_RAG_SHORT_BASE = [
+export const PROMPTS_RAG_SHORT_BASE = [
   "apa itu cuti akademik?",
   "berapa SKS minimal untuk lulus S1?",
   "kapan jadwal pendaftaran PMB UNHAS?",
@@ -51,7 +51,7 @@ const PROMPTS_RAG_SHORT_BASE = [
   "apa itu mahasiswa aktif?",
 ];
 
-const PROMPTS_RAG_MEDIUM_BASE = [
+export const PROMPTS_RAG_MEDIUM_BASE = [
   "mau tanya prosedur pengambilan cuti akademik dan persyaratannya apa saja?",
   "bagaimana cara mengajukan keberatan nilai? apakah ada batas waktu tertentu?",
   "bisa dijelaskan perbedaan kurikulum 2020 dan 2022?",
