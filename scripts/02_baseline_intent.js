@@ -7,9 +7,11 @@ import { check, sleep, group } from 'k6';
 import { Trend } from 'k6/metrics';
 import { recordMetrics, errorRate } from './utils/metrics.js';
 import {
-  PROMPTS_RAG_SHORT, PROMPTS_RAG_MEDIUM,
-  PROMPTS_CHITCHAT, PROMPTS_OUT_OF_SCOPE
-} from './utils/prompts.js';
+  PROMPTS_CHITCHAT,
+  PROMPTS_RAG_SHORT_BASE,
+  PROMPTS_RAG_MEDIUM_BASE,
+  PROMPTS_OUT_OF_SCOPE,
+} from "./utils/prompts.js";
 
 const BASE_URL = __ENV.RAG_URL || 'http://localhost:8000';
 const headers  = { 'Content-Type': 'application/json' };
